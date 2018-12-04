@@ -92,3 +92,39 @@ def check():
 
     else:
         return jsonify(False)
+
+@app.route("/interests", methods=["GET", "POST"])
+def match():
+    if request.method == "GET":
+        return render_template("interests.html")
+    #user = db.execute("SELECT * FROM students WHERE user_id = :user_id", user_id=session["user_id"])
+    if request.method == "POST":
+        user = db.execute("SELECT * FROM users WHERE user_id = :user_id", user_id=1)
+        print(user)
+        user1 = db.execute("SELECT * FROM students")
+        user_environment = user1[0]['environment']
+        user_year = user1[0]['year']
+        user_country = user1[0]['country']
+        user_color = user1[0]['color']
+        user_house = user1[0]['house']
+
+        environment = db.execute("SELECT * FROM students WHERE environment = :environment AND year = :year AND country = :country AND color = :color AND house = :house", environment=user_environment, year=user_year, country=user_country, color=user_color, house=user_house)
+        print(environment)
+
+    #user_environment = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
+    #user_year = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
+    #user_country = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
+    #user_color = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
+    #user_house = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
+    #SELECT environment FROM students WHERE
+    #        ON TY.Age=TX.Age AND TY.Salary=TX.Salary
+    #          AND TY.Gender=TX.Gender AND TY.State=TX.State
+    #          AND TY.VisitDate<TX.VisitDate
+    #WHERE user_id = :user_id", user_id=session["user_id"]
+
+    #SELECT * FROM students
+    #INNER JOIN user ON students.environment = user.environment
+     #   AND students.year = user.year
+      #  AND students.country = user.country
+       # AND students.color = user.color
+        #AND students.house = user.house
