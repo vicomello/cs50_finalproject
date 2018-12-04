@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+
+{% block main %}
+
+  <h3>Please fill out with your interests</h3>
+
+  <div class="container">
+    <form action="/action_page.php">
+
+      <!-- Ask for country and warn if missing -->
+      <label for="environment">What kind of environment do you prefer?</label><br>
+      <input type="radio" name="environment" value="calm" required> Calm<br>
+      <input type="radio" name="environment" value="agitaded"> Agitaded<br><br>
+
+      <label for="year">In what year are you in?</label>
+      <select id="year" name="year">
+        <option value="select" disabled selected>Select</option>
+        <option value="Freshman">Freshman</option>
+        <option value="Sophomore">Sophomore</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior">Senior</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <!-- Ask for country and warn if missing -->
+      <label for="country">Where are you from?</label><br>
+      <input type="radio" name="country" value="USA" required> USA<br>
+      <input type="radio" name="country" value="notUSA"> Outside USA<br><br>
+
+      <label for="color">What is your favorite color?</label>
+      <select id="color" name="color">
+        <option value="select" disabled selected>Select</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+      </select>
+
+      <label for="house">What house are you in?</label>
+      <select id="house" name="house">
+        <option value="select" disabled selected>Select</option>
+        <option value="Quad">Quad</option>
+        <option value="Quincy">Quincy</option>
+        <option value="Winthrop">Winthrop</option>
+        <option value="Dudley">Dudley</option>
+        <option value="Leverett">Leverett</option>
+        <option value="Mather">Mather</option>
+      </select>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <script>
+      // http://getbootstrap.com/docs/4.1/components/forms/#validation
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+  </script>
+
+{% endblock %}
+
