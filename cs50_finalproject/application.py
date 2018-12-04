@@ -15,6 +15,12 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded - Copied from Problem set 8
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+# Configure session to use filesystem (instead of signed cookies) - Copied from problem set 8
+app.config["SESSION_FILE_DIR"] = mkdtemp()
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 # Ensure responses aren't cached - Copied from Problem set 8
 
 
@@ -94,6 +100,7 @@ def check():
         return jsonify(False)
 
 @app.route("/interests", methods=["GET", "POST"])
+#@login_required
 def match():
     if request.method == "GET":
         return render_template("interests.html")
@@ -101,15 +108,11 @@ def match():
     if request.method == "POST":
         user = db.execute("SELECT * FROM users WHERE user_id = :user_id", user_id=1)
         print(user)
-        user1 = db.execute("SELECT * FROM students")
-        user_environment = user1[0]['environment']
-        user_year = user1[0]['year']
-        user_country = user1[0]['country']
-        user_color = user1[0]['color']
-        user_house = user1[0]['house']
+        attributes = db.execute("SELECT * FROM students")
 
-        environment = db.execute("SELECT * FROM students WHERE environment = :environment AND year = :year AND country = :country AND color = :color AND house = :house", environment=user_environment, year=user_year, country=user_country, color=user_color, house=user_house)
-        print(environment)
+        #environment = db.execute("SELECT * FROM students WHERE environment = :environment AND year = :year AND country = :country AND color = :color AND house = :house",
+        #environment=attributes[0]['environment'], year=attributes[0]['year'], country=attributes[0]['country'], color=user_color = attributes[0]['color'], house=user_house = attributes[0]['house'])
+        #print(environment)
 
     #user_environment = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
     #user_year = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
