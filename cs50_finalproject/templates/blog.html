@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Blog - Standout</title>
+    <title>Appeople</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -15,9 +15,9 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="static/vendor.css">
+    <link rel="stylesheet" href="static/main.css">
 
     <!-- script
     ================================================== -->
@@ -26,8 +26,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
 
 </head>
 
@@ -38,447 +38,489 @@
     </div>
 
 
-    <!-- header 
+    <!-- header
     ================================================== -->
-    <header class="s-header s-header--blog">
+    <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+            <a class="site-logo" href="blog.html">
+                 <a class="mark" href="#home" title="intro">Appeople</a>
             </a>
         </div>
 
         <nav class="row header-nav-wrap wide">
             <ul class="header-main-nav">
-                <li><a href="index.html" title="intro">Home</a></li>
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>	
+                <li class="current"><a class="smoothscroll" href="/" title="intro" method="get">Intro</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll" href="/login" title="login" method="get">Sign In</a></li>
+                <li><a class="smoothscroll" href="/register" title="register" method="get">Register</a></li>
+                <li><a href="blog.html" title="blog">Etc</a></li>
             </ul>
 
-            <ul class="header-social">
+            <!--<ul class="header-social">
                 <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
                 <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
                 <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-            </ul>
+            </ul>-->
         </nav>
 
         <a class="header-menu-toggle" href="#"><span>Menu</span></a>
-    
+
     </header> <!-- end header -->
 
 
-    <!-- page header
+    <!-- home
     ================================================== -->
-    <section class="page-header">
+    <section id="home" class="s-home target-section">
 
-        <div class="row page-header__content narrower text-center">
-            <div class="col-full">
+        <div class="home-image-part"></div>
 
-                <h3 class="subhead">Our Blog.</h3>
-                <h1 class="display-1">
-                    Thoughts, Ideas, Insights and Other Stuff.
+        <div class="home-content">
+
+            <div class="row home-content__main wide">
+
+                <h1>
+                A New Way To Meet <br>
+                People At Harvard.
                 </h1>
 
-                <a href="#0" class="page-header__search-trigger">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <span>Search the blog</span>
-                </a>
-                <div class="page-header__search">
-                    <form role="search" method="get" class="page-header__search-form" action="#">
-                        <label>
-                            <span class="hide-content">Search for:</span>
-                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
-                        </label>
-                        <input type="submit" class="search-submit" value="Search">
-                    </form>
-        
-                    <a href="#0" title="Close Search" class="page-header__overlay-close">Close</a>
-                </div>  <!-- end page-header__search -->
+                <h3>
+                Looking for a date? Or just looking for a friend? Appeople takes that in consideration and matches you with people you have common interests with.
+                </h3>
 
-            </div>
-        </div>
+                <div class="home-content__button">
+                    <a class="btn-video" href="https://player.vimeo.com/video/14592941?color=00a650&title=0&byline=0&portrait=0" data-lity>
+                        <span class="video-icon"></span>
+                    </a>
+                    <a class="smoothscroll btn btn--primary btn--large" href="/register" title="register" method="get">
+                        Register Now
+                    </a>
+                </div>
 
-    </section> <!-- end page-header -->
+            </div> <!-- end home-content__main -->
+
+            <a href="#about" class="home-scroll smoothscroll">
+                <span class="home-scroll__text">Scroll Down</span>
+                <span class="home-scroll__icon"></span>
+            </a>
+
+        </div> <!-- end home-content -->
+
+    </section> <!-- end s-home -->
 
 
-    <!-- blog content wrap
+    <!-- about
     ================================================== -->
-    <section class="blog-content-wrap">
+    <!--
+    <section id="about" class="s-about target-section">
 
-        <div class="row entries-wrap add-top-padding">
-            <div class="entries">
-
-                <article class="col-block">
-                    
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/lamp-400.jpg" 
-                                     srcset="images/thumbs/post/lamp-400.jpg 1x, images/thumbs/post/lamp-800.jpg 2x" alt="">
-                            </a>
-                        </div>        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Design</a> 
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">3 Benefits of Minimalism In Interface Design.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                    
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/blue-400.jpg" 
-                                     srcset="images/thumbs/post/blue-400.jpg 1x, images/thumbs/post/blue-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Workplace</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">10 Reasons Why Working Remotely Makes Sense.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                    
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/desk-400.jpg" 
-                                     srcset="images/thumbs/post/desk-400.jpg 1x, images/thumbs/post/desk-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Updates</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">New Updates In Standout - August 2018.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/watch-400.jpg" 
-                                     srcset="images/thumbs/post/watch-400.jpg 1x, images/thumbs/post/watch-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Management</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">The Pomodoro Technique Really Works.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/wheel-400.jpg" 
-                                     srcset="images/thumbs/post/wheel-400.jpg 1x, images/thumbs/post/wheel-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Leadership</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">Three Start-up Leadership Lessons I wish I learned Earlier.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/jsmith-400.jpg" 
-                                     srcset="images/thumbs/post/jsmith-400.jpg 1x, images/thumbs/post/jsmith-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Announcement</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">Introducing Jonathan Smith: Standout’s new CEO.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/mac-400.jpg" 
-                                     srcset="images/thumbs/post/mac-400.jpg 1x, images/thumbs/post/mac-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Workplace</a> 
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">9 Tips to Create a Hassle-free Workplace For Your Startup.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/working-400.jpg" 
-                                     srcset="images/thumbs/post/working-400.jpg 1x, images/thumbs/post/working-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Updates</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">New Updates In Standout - July 2018.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/woodcraft-400.jpg" 
-                                     srcset="images/thumbs/post/woodcraft-400.jpg 1x, images/thumbs/post/woodcraft-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Design</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">An Examination of Minimalistic Design.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/fuji-400.jpg" 
-                                     srcset="images/thumbs/post/fuji-400.jpg 1x, images/thumbs/post/fuji-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">UI/UX Design</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">How Imagery Drives User Experience.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/workplace-400.jpg" 
-                                     srcset="images/thumbs/post/workplace-400.jpg 1x, images/thumbs/post/workplace-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Marketing</a>
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">How Marketing Teams Use Our App.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-                <article class="col-block">
-                
-                    <div class="item-entry" data-aos="fade-up">
-                        <div class="item-entry__thumb">
-                            <a href="single.html" class="item-entry__thumb-link">
-                                <img src="images/thumbs/post/work-remote-400.jpg" 
-                                     srcset="images/thumbs/post/work-remote-400.jpg 1x, images/thumbs/post/work-remote-800.jpg 2x" alt="">
-                            </a>
-                        </div>
-        
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="#0">Updates</a> 
-                            </div>
-    
-                            <h1 class="item-entry__title"><a href="single.html">New Updates In Standout - June 2018.</a></h1>
-                                
-                            <div class="item-entry__content">
-                                <p>
-                                Aliquam mollitia consequatur et qui iste ducimus repellat. Aut expedita quibusdam est. Tempore dolor omnis in et 
-                                voluptate et eligendi debitis eligendi. Nulla autem necessitatibus...
-                                </p>
-                                <a class="more-link" href="single.html">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-    
-                </article> <!-- end article -->
-
-            </div> <!-- end entries -->
-        </div> <!-- end entries-wrap -->
-
-        <div class="row pagination-wrap">
+        <div class="row section-header narrower align-center" data-aos="fade-up">
             <div class="col-full">
-                <nav class="pgn" data-aos="fade-up">
-                    <ul>
-                        <li><a class="pgn__prev" href="#0">Prev</a></li>
-                        <li><a class="pgn__num" href="#0">1</a></li>
-                        <li><span class="pgn__num current">2</span></li>
-                        <li><a class="pgn__num" href="#0">3</a></li>
-                        <li><a class="pgn__num" href="#0">4</a></li>
-                        <li><a class="pgn__num" href="#0">5</a></li>
-                        <li><span class="pgn__num dots">…</span></li>
-                        <li><a class="pgn__num" href="#0">8</a></li>
-                        <li><a class="pgn__next" href="#0">Next</a></li>
-                    </ul>
-                </nav>
+                <h1 class="display-1">
+                    The Most Popular And Number 1 Mail App.
+                </h1>
+                <p class="lead">
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea.
+                </p>
+            </div>
+        </div> <!-- end section-header -->
+<!--
+        <div class="row about-desc" data-aos="fade-up">
+            <div class="col-full slick-slider about-desc__slider">
+
+                <div class="about-desc__slide">
+                    <h3 class="item-title">Smart.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea aut cumque eos.
+                    </p>
+                </div>  <!-- end about-desc__slide -->
+<!--
+                <div class="about-desc__slide">
+                    <h3 class="item-title">User-Friendly.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea aut cumque eos.
+                    </p>
+                </div>  <!-- end about-desc__slide -->
+<!--
+                <div class="about-desc__slide">
+                    <h3 class="item-title">Powerful.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea aut cumque eos.
+                    </p>
+                </div>  <!-- end about-desc__slide -->
+<!--
+                <div class="about-desc__slide">
+                    <h3 class="item-title">Secure.</h3>
+
+                    <p>
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea aut cumque eos.
+                    </p>
+                </div>  <!-- end about-desc__slide -->
+<!--
+<!--            </div> <!-- end about-desc__slider -->
+<!--        </div> <!-- end about-desc -->
+<!--
+        <div class="row about-bottom-image" data-aos="fade-up">
+            <img src="images/app-screen-1400.png"
+                 srcset="images/app-screen-600.png 600w,
+                         images/app-screen-1400.png 1400w,
+                         images/app-screen-2800.png 2800w"
+                 sizes="(max-width: 2800px) 100vw, 2800px"
+                 alt="App Screenshots">
+         </div>
+
+    </section> <!-- end s-about -->
+
+
+    <!-- process
+    ==================================================
+    <section id="process" class="s-process">
+
+        <div class="row">
+            <div class="col-full text-center" data-aos="fade-up">
+                <h2 class="display-2">How The App Works?</h2>
             </div>
         </div>
 
-    </section> <!-- end blog content wrap -->
+        <div class="row process block-1-4 block-m-1-2 block-tab-full">
+            <div class="col-block item-process" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Sign Up</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                    Numquam debitis pariatur omnis facere unde.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block item-process" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Create</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                    Numquam debitis pariatur omnis facere unde.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block item-process" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Compose</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                    Numquam debitis pariatur omnis facere unde.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block item-process" data-aos="fade-up">
+                <div class="item-process__text">
+                    <h3>Send</h3>
+                    <p>
+                    Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                    Numquam debitis pariatur omnis facere unde.
+                    </p>
+                </div>
+            </div>
+        </div> <!-- end process -->
+
+<!--
+        <div class="row process-bottom-image" data-aos="fade-up">
+            <img src="images/phone-app-screens-1000.png"
+                 srcset="images/phone-app-screens-600.png 600w,
+                         images/phone-app-screens-1000.png 1000w,
+                         images/phone-app-screens-2000.png 2000w"
+                 sizes="(max-width: 2000px) 100vw, 2000px"
+                 alt="App Screenshots">
+         </div>
+
+    </section> <!-- end s-process -->
 
 
-    <!-- footer
+    <!-- features
+    ==================================================
+    <section id="features" class="s-features target-section">
+
+        <div class="row section-header narrower align-center has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <h1 class="display-1">
+                    Loaded With Features You Would Surely Love.
+                </h1>
+                <p class="lead">
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea.
+                </p>
+            </div>
+        </div> <!-- end section-header -->
+
+        <!--
+        <div class="row bit-narrow features block-1-2 block-mob-full">
+
+            <div class="col-block item-feature" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-upload"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Cloud Based</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-video-camera"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Voice & Video</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-shield"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Always Secure</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-lego-block"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Play Games</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-chat"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Group Chat</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-feature" data-aos="fade-up">
+                <div class="item-feature__icon">
+                    <i class="icon-wallet"></i>
+                </div>
+                <div class="item-feature__text">
+                    <h3 class="item-title">Payments</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+        </div> <!-- end features -->
+        <!--
+        <div class="testimonials-wrap" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-full testimonials-header">
+                    <h2 class="display-2">1 Million+ Users Can't Be Wrong.</h2>
+                </div>
+            </div>
+
+            <div class="row testimonials">
+
+                <div class="col-full slick-slider testimonials__slider">
+
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Naruto Uzumaki</span>
+                            <a href="#0" class="testimonials__link">@narutouzumaki</a>
+                        </div>
+                        <p>Qui ipsam temporibus quisquam velMaiores eos cumque distinctio nam accusantium ipsum.
+                        Laudantium quia consequatur molestias delectus culpa facere hic dolores aperiam. Accusantium praesentium corpori.</p>
+                    </div> <!-- end testimonials__slide -->
+<!--
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Sasuke Uchiha</span>
+                            <a href="#0" class="testimonials__link">@sasukeuchiha</a>
+                        </div>
+                        <p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci.
+                        Nisi eaque consequatur. Quasi voluptas eius distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>
+                    </div> <!-- end testimonials__slide -->
+<!--
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/user-03.jpg" alt="Author image" class="testimonials__avatar">
+                        <div class="testimonials__author">
+                            <span class="testimonials__name">Shikamaru Nara</span>
+                            <a href="#0" class="testimonials__link">@shikamarunara</a>
+                        </div>
+                        <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.
+                        Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.</p>
+                    </div> <!-- end testimonials__slide -->
+<!--
+                </div>
+
+            </div> <!-- end testimonials -->
+<!--
+        </div> <!-- end testimonials-wrap -->
+<!--
+    </section> <!-- end s-features -->
+
+
+    <!-- end s-pricing
+    <!-- pricing
+    ==================================================
+    <section id="pricing" class="s-pricing target-section">
+
+        <div class="row section-header narrower align-center" data-aos="fade-up">
+            <div class="col-full">
+                <h1 class="display-1">
+                   Our Easy Pricing Plans For Everyone.
+                </h1>
+                <p class="lead">
+                    Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
+                    Ut quis enim rerum quia assumenda repudiandae non cumque qui. Amet repellat
+                    omnis ea.
+                </p>
+            </div>
+        </div>
+
+        <div class="row plans block-1-3 block-m-1-2 block-tab-full stack">
+
+            <div class="col-block item-plan" data-aos="fade-up">
+                <div class="item-plan__block">
+
+                    <div class="item-plan__top-part">
+                        <h3 class="item-plan__title">Basic</h3>
+                        <p class="item-plan__price">Free</p>
+                    </div>
+
+                    <div class="item-plan__bottom-part">
+                        <ul class="item-plan__features disc">
+                            <li><span>5GB</span> Storage</li>
+                            <li><span>10GB</span> Bandwidth</li>
+                            <li><span>5</span> Databases</li>
+                            <li><span>30</span> Email Accounts</li>
+                        </ul>
+
+                        <a class="btn btn--primary large full-width" href="#0">Get Started</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-block item-plan item-plan--popular" data-aos="fade-up">
+                <div class="item-plan__block">
+
+                    <div class="item-plan__top-part">
+                        <h3 class="item-plan__title">Pro Plan</h3>
+                        <p class="item-plan__price">$10</p>
+                        <p class="item-plan__per">Per Month</p>
+                    </div>
+
+                    <div class="item-plan__bottom-part">
+                        <ul class="item-plan__features disc">
+                            <li><span>500GB</span> Storage</li>
+                            <li><span>Unlimited</span> Bandwidth</li>
+                            <li><span>50</span> Databases</li>
+                            <li><span>50</span> Email Accounts</li>
+                        </ul>
+
+                        <a class="btn btn--primary large full-width" href="#0">Get Started</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-block item-plan" data-aos="fade-up">
+                <div class="item-plan__block">
+
+                    <div class="item-plan__top-part">
+                        <h3 class="item-plan__title">Ultimate Plan</h3>
+                        <p class="item-plan__price">$20</p>
+                        <p class="item-plan__per">Per Month</p>
+                    </div>
+
+                    <div class="item-plan__bottom-part">
+                        <ul class="item-plan__features disc">
+                            <li><span>1TB</span> Storage</li>
+                            <li><span>Unlimited</span> Bandwidth</li>
+                            <li><span>100</span> Databases</li>
+                            <li><span>100</span> Email Accounts</li>
+                        </ul>
+
+                        <a class="btn btn--primary large full-width" href="#0">Get Started</a>
+                    </div>
+
+                </div>
+            </div>  -->
+
+        <!--</div>
+
+    </section>
+  -->
+
+    <!-- download
+    ================================================== -->
+   <!-- footer <section id="download" class="s-download">
+
+        <div class="row download-content">
+            <div class="col-six md-seven download-content__text pull-right" data-aos="fade-up">
+                <h1 class="display-2">
+                    Download The App Now!
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <ul class="download-content__badges">
+                    <li><a href="#0" title="" class="badge-appstore">App Store</a></li>
+                    <li><a href="#0" title="" class="badge-googleplay">Play Store</a></li>
+                </ul>
+            </div>
+            <div class="download-content__image" data-aos="fade-up">
+                <img src="images/phone-app-profile-550.png"
+                     srcset="images/phone-app-profile-550.png 1x, images/phone-app-profile-1100.png 2x">
+            </div>
+        </div>
+
+    </section> <!-- end s-download -->
+
+
+
     ================================================== -->
     <footer class="s-footer footer">
 
@@ -496,28 +538,28 @@
                     <form id="mc-form" class="group" novalidate="true">
 
                         <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
-            
+
                         <input type="submit" name="subscribe" value="Sign Up">
-            
+
                         <label for="mc-email" class="subscribe-message"></label>
-            
+
                     </form>
                 </div>
             </div>
-        </div> <!-- end footer__top -->
+        </div>
 
         <div class="row footer__bottom">
             <div class="col-five tab-full">
                 <div class="footer__logo">
-                    <a href="index.html">
+                    <a href="blog.html">
                         <img src="images/logo.svg" alt="Homepage">
                     </a>
                 </div>
 
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
                 laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
 
@@ -530,11 +572,11 @@
 
             <div class="col-six tab-full end">
                 <ul class="footer__site-links">
-                    <li><a href="index.html#home" title="intro">Intro</a></li>
-                    <li><a href="index.html#about" title="about">About</a></li>
-                    <li><a href="index.html#features" title="features">Features</a></li>
-                    <li><a href="index.html#pricing" title="pricing">Pricing</a></li>
-                    <li><a href="blog.html" title="blog">Blog</a></li>	
+                    <li><a class="smoothscroll" href="#home" title="intro">Intro</a></li>
+                    <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                    <li><a class="smoothscroll" href="#features" title="features">Features</a></li>
+                    <li><a class="smoothscroll" href="#pricing" title="pricing">Pricing</a></li>
+                    <li><a href="blog.html" title="blog">Blog</a></li>
                 </ul>
 
                 <p class="footer__contact">
@@ -550,7 +592,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
 
-        </div> <!-- end footer__bottom -->
+        </div>
 
         <div class="go-top">
             <a class="smoothscroll" title="Back to Top" href="#top"></a>

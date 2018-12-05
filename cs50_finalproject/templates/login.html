@@ -1,30 +1,52 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!--
-    you can substitue the span of reauth email for a input with the email and
-    include the remember me checkbox
-    -->
-    <div class="container">
-        <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="username" class="form-control" placeholder="Username" name="username" required autofocus>
-                <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
-                <!--<div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>-->
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Log In</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+	<!--	<link href="../../css.css" rel="stylesheet" type="text/css" media="all" />-->
+		<link href="static/css.css" rel="stylesheet">
+<!-- //Custom Theme files -->
+<!-- web font -->
+		<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+	</head>
+	<body>
+		<!-- main -->
+		<div class="main-w3layouts wrapper">
+			<h1>Log In</h1>
+			<div class="main-agileinfo">
+				<div class="agileits-top">
+					<form action="/login" method="post">
+						<input autocomplete="off" class="form-control" name="username" placeholder="Username" type="text">
+						<input class="form-control" name="password" placeholder="Password" type="password">
+						<div class="wthree-text">
+							<!--<label class="anim">
+								<input type="checkbox" class="checkbox" required="">
+								<span>I Agree To The Terms & Conditions</span>
+							</label>-->
+							<div class="clear"> </div>
+						</div>
+						<input type="submit" value="LOGIN">
+					</form>
+					<p>Don't have an Account? <a href="/register"> Register Now!</a></p>
+				</div>
+			</div>
+			<!-- copyright -->
+			<div class="colorlibcopy-agile">
+				<p>© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
+			</div>
+			<!-- //copyright -->
+		</div>
+		<!-- //main -->
+	</body>
+</html>

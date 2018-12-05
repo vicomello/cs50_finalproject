@@ -74,20 +74,28 @@ def register():
             hashword = generate_password_hash(request.form.get("password"))
             users = db.execute("INSERT INTO users (username, hashword) VALUES(:username, :hash)",
                                username=request.form.get("username"), hash=hashword)
-            session["user_id"]
-            return redirect("/interests")
+            rows = db.execute("SELECT * FROM users WHERE username = :username",
+                          username=request.form.get("username"))
+            session["user_id"] = rows[0]["user_id"]
+            return redirect("/index")
 
         elif True:
             return apology ("Username was already taken!")
 
-@app.route("/")
+@app.route("/", methods=["GET"])
+def blog():
+    return render_template("blog.html")
+
+@app.route("/index", methods=["GET"])
+@login_required
 def index():
-    #session["user_id"]
     return render_template("index.html")
+
+
 
 @app.route("/check", methods=["GET"])
 def check():
-    """Return true if username available, else false, in JSON format"""
+    """Return true if username available, else false, in JSON format. Copied from Problem Set 8"""
     username = request.args.get("username")
     rows = db.execute("SELECT * FROM users WHERE username = :username", username=username)
 
@@ -102,6 +110,7 @@ def check():
 def login():
     if request.method == "GET":
         return render_template("login.html")
+
     if request.method == "POST":
         # Ensure username was submitted
         if not request.form.get("username"):
@@ -120,15 +129,14 @@ def login():
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
-        session["user_id"] = rows[0]["id"]
+        session["user_id"] = rows[0]["user_id"]
 
         # Redirect user to home page
-        return redirect("/interests")
-
+        return redirect("/index")
 
 
 @app.route("/interests", methods=["GET", "POST"])
-#@login_required
+@login_required
 def match():
     if request.method == "GET":
         return render_template("interests.html")
