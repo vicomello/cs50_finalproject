@@ -1,81 +1,88 @@
 <!DOCTYPE html>
+<html class="no-js" lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Appeople</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="static/vendor.css">
+    <link rel="stylesheet" href="static/main.css">
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
+
 </head>
 
-{% block main %}
+<body id="top">
 
-  <h3>Please fill out with your interests</h3>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
 
-  <div class="container">
-    <form action="/action_page.php">
 
-      <!-- Ask for country and warn if missing -->
-      <label for="environment">What kind of environment do you prefer?</label><br>
-      <input type="radio" name="environment" value="calm" required> Calm<br>
-      <input type="radio" name="environment" value="agitaded"> Agitaded<br><br>
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
 
-      <label for="year">In what year are you in?</label>
-      <select id="year" name="year">
-        <option value="select" disabled selected>Select</option>
-        <option value="Freshman">Freshman</option>
-        <option value="Sophomore">Sophomore</option>
-        <option value="Junior">Junior</option>
-        <option value="Senior">Senior</option>
-        <option value="Other">Other</option>
-      </select>
+        <div class="header-logo">
+            <a class="site-logo" href="blog.html">
+                 <a class="mark" href="#home" title="intro">Appeople</a>
+            </a>
+        </div>
 
-      <!-- Ask for country and warn if missing -->
-      <label for="country">Where are you from?</label><br>
-      <input type="radio" name="country" value="USA" required> USA<br>
-      <input type="radio" name="country" value="notUSA"> Outside USA<br><br>
+        <nav class="row header-nav-wrap wide">
+            <ul class="header-main-nav">
+                <li class="current"><a class="smoothscroll" href="/" title="intro" method="get">Intro</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll" href="/login" title="login" method="get">Sign In</a></li>
+                <li><a class="smoothscroll" href="/register" title="register" method="get">Register</a></li>
+                <li><a href="blog.html" title="blog">Etc</a></li>
+            </ul>
 
-      <label for="color">What is your favorite color?</label>
-      <select id="color" name="color">
-        <option value="select" disabled selected>Select</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="yellow">Yellow</option>
-        <option value="green">Green</option>
-        <option value="black">Black</option>
-        <option value="white">White</option>
-      </select>
+            <div class="row home-content__main wide">
+                  <div class="home-content__button">
+                      <a class="btn-video" href="https://player.vimeo.com/video/14592941?color=00a650&title=0&byline=0&portrait=0" data-lity>
+                          <span class="video-icon"></span>
+                      </a>
+                      <a class="smoothscroll btn btn--primary btn--large" href="/personality" title="register" method="get">
+                          Calculate my personality!
+                      </a>
+                  </div>
 
-      <label for="house">What house are you in?</label>
-      <select id="house" name="house">
-        <option value="select" disabled selected>Select</option>
-        <option value="Quad">Quad</option>
-        <option value="Quincy">Quincy</option>
-        <option value="Winthrop">Winthrop</option>
-        <option value="Dudley">Dudley</option>
-        <option value="Leverett">Leverett</option>
-        <option value="Mather">Mather</option>
-      </select>
+            </div> <!-- end home-content__main -->
 
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+            <a href="#about" class="home-scroll smoothscroll">
+                <span class="home-scroll__text">Scroll Down</span>
+                <span class="home-scroll__icon"></span>
+            </a>
 
-  <script>
-      // http://getbootstrap.com/docs/4.1/components/forms/#validation
-      (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-  </script>
+        </div> <!-- end home-content -->
 
-{% endblock %}
+    </section> <!-- end s-home -->
 
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -9,6 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import login_required, apology
 
+lista = [0]
 # Configure application - Copied from Problem set 8
 app = Flask(__name__)
 
@@ -86,7 +87,28 @@ def register():
 def blog():
     return render_template("blog.html")
 
-@app.route("/index", methods=["GET"])
+@app.route("/personality", methods=["GET", "POST"])
+@login_required
+def personality():
+    if request.method == "GET":
+        print(0)
+        return render_template("personality.html")
+        session["user_id"]
+
+    if request.method == "POST":
+        db.execute("INSERT INTO traits (EXT, AGR, CON, EST, OPN, user_id) VALUES (:EXT, :AGR, :CON, :EST, :OPN, :user_id)",
+        EXT=request.form.get("EXT1"), AGR=request.form.get("AGR1"), CON=request.form.get("CSN1"), EST=request.form.get("EST1"), OPN=request.form.get("OPN1"), user_id=session["user_id"])
+    return apology("deu certo sim")
+
+
+#@app.route("/personality_results", methods=["GET"])
+#@login_required
+#def personality_results():
+#    if request.method == "GET":
+#        return render_template("personality_results.html")
+
+
+@app.route("/index", methods=["GET", "POST"])
 @login_required
 def index():
     return render_template("index.html")
@@ -149,21 +171,3 @@ def match():
         #environment = db.execute("SELECT * FROM students WHERE environment = :environment AND year = :year AND country = :country AND color = :color AND house = :house",
         #environment=attributes[0]['environment'], year=attributes[0]['year'], country=attributes[0]['country'], color=user_color = attributes[0]['color'], house=user_house = attributes[0]['house'])
         #print(environment)
-
-    #user_environment = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
-    #user_year = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
-    #user_country = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
-    #user_color = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
-    #user_house = db.execute("SELECT environment FROM students WHERE user_id = :user_id", user_id=session["user_id"])
-    #SELECT environment FROM students WHERE
-    #        ON TY.Age=TX.Age AND TY.Salary=TX.Salary
-    #          AND TY.Gender=TX.Gender AND TY.State=TX.State
-    #          AND TY.VisitDate<TX.VisitDate
-    #WHERE user_id = :user_id", user_id=session["user_id"]
-
-    #SELECT * FROM students
-    #INNER JOIN user ON students.environment = user.environment
-     #   AND students.year = user.year
-      #  AND students.country = user.country
-       # AND students.color = user.color
-        #AND students.house = user.house
