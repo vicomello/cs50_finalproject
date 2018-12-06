@@ -122,8 +122,88 @@ def lifestyle():
         session["user_id"]
 
     if request.method == "POST":
-        db.execute("INSERT INTO traits (lf1, lf2, lf3, lf4, lf5, lf6, lf7, lf8, lf9, lf10, lf11, lf12, lf13, lf14, lf15) VALUES (:lf1, :lf2, :lf3, :lf4, :lf5, :lf6, :lf7, :lf8, :lf9, :lf10, :lf11, :lf12, :lf13, :lf14, :lf15",
-        lf1=request.form.get("lf1"), lf2=request.form.get("lf2"), lf3=request.form.get("lf3"), lf4=request.form.get("lf4"), lf5=request.form.get("lf5"), lf6=request.form.get("lf6"), lf7=request.form.get("lf7"), lf8=request.form.get("lf8"), lf9=request.form.get("lf9"), lf10=request.form.get("lf10"), lf11=request.form.get("lf11"), lf12=request.form.get("lf12"), lf13=request.form.get("lf13"), lf14=request.form.get("lf14"), lf15=request.form.get("lf15"))
+        if request.form.get("lf1"):
+            lf1 = 1
+        else:
+            lf1 = 0
+
+        if request.form.get("lf2"):
+            lf2 = 1
+        else:
+            lf2 = 0
+
+        if request.form.get("lf3"):
+            lf3 = 1
+        else:
+            lf3 = 0
+
+        if request.form.get("lf4"):
+            lf4 = 1
+        else:
+            lf4 = 0
+
+        if request.form.get("lf5"):
+            lf5 = 1
+        else:
+            lf5 = 0
+
+        if request.form.get("lf6"):
+            lf6 = 1
+        else:
+            lf6 = 0
+
+        if request.form.get("lf7"):
+            lf7 = 1
+        else:
+            lf7 = 0
+
+        if request.form.get("lf8"):
+            lf8 = 1
+        else:
+            lf8 = 0
+
+        if request.form.get("lf9"):
+            lf9 = 1
+        else:
+            lf9 = 0
+        if request.form.get("lf10"):
+            lf10 = 1
+        else:
+            lf10 = 0
+
+        if request.form.get("lf11"):
+            lf11 = 1
+        else:
+            lf11 = 0
+
+        if request.form.get("lf12"):
+            lf12 = 1
+        else:
+            lf12 = 0
+        if request.form.get("lf13"):
+            lf13 = 1
+        else:
+            lf13 = 0
+
+        if request.form.get("lf14"):
+            lf14 = 1
+        else:
+            lf14 = 0
+
+        if request.form.get("lf15"):
+            lf15 = 1
+        else:
+            lf15 = 0
+
+        user = db.execute("SELECT user_id FROM traits where user_id = :user_id", user_id=session["user_id"])
+        if not user:
+            db.execute("INSERT INTO traits (lf1, lf2, lf3, lf4, lf5, lf6, lf7, lf8, lf9, lf10, lf11, lf12, lf13, lf14, lf15, user_id) VALUES (:lf1, :lf2, :lf3, :lf4, :lf5, :lf6, :lf7, :lf8, :lf9, :lf10, :lf11, :lf12, :lf13, :lf14, :lf15, :user_id)",
+            lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
+            return redirect("/")
+        else:
+            db.execute("UPDATE traits SET lf1=:lf1, lf2=:lf2, lf3=:lf3, lf4=:lf4, lf5=:lf5, lf6=:lf6, lf7=:lf7, lf8=:lf8, lf9=:lf9, lf10=:lf10, lf11=:lf11, lf12=:lf12, lf13=:lf13, lf14=:lf14, lf15=:lf15, WHERE user_id=:user_id",
+            lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
+            return redirect("/")
 
 @app.route("/index", methods=["GET", "POST"])
 @login_required
