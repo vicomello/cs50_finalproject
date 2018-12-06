@@ -1,1 +1,86 @@
-Success
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Appeople</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="static/vendor.css">
+    <link rel="stylesheet" href="static/main.css">
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
+
+</head>
+
+<body id="top">
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="blog.html">
+                 <a class="mark" href="#home" title="intro">Appeople</a>
+            </a>
+        </div>
+
+        <nav class="row header-nav-wrap wide">
+            <ul class="header-main-nav">
+                <li class="current"><a class="smoothscroll" href="/" title="intro" method="get">Intro</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                <li><a class="smoothscroll" href="/login" title="login" method="get">Sign In</a></li>
+                <li><a class="smoothscroll" href="/register" title="register" method="get">Register</a></li>
+                <li><a href="/logout" title="blog">Log Out</a></li>
+            </ul>
+
+           <div>
+                {% block main %}
+                    <div>
+                    <h3 style="color:blue;">
+                            Name: {{name[0].username}}
+                    </h3>
+                    </div>
+                    <div>
+                    <h3 style="color:blue;">
+                            Email: {{name[0].email}}
+                    </h3>
+                    </div>
+                {% endblock %}
+           </div>
+
+        </div> <!-- end home-content -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
