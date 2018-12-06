@@ -6,6 +6,11 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
+import sys
+from collections import Counter, defaultdict
+from itertools import groupby
+from operator import itemgetter
+from timeit import timeit
 
 from helpers import login_required, apology
 
@@ -166,6 +171,7 @@ def lifestyle():
             lf9 = 1
         else:
             lf9 = 0
+
         if request.form.get("lf10"):
             lf10 = 1
         else:
@@ -180,6 +186,7 @@ def lifestyle():
             lf12 = 1
         else:
             lf12 = 0
+
         if request.form.get("lf13"):
             lf13 = 1
         else:
@@ -199,11 +206,11 @@ def lifestyle():
         if not user:
             db.execute("INSERT INTO traits (lf1, lf2, lf3, lf4, lf5, lf6, lf7, lf8, lf9, lf10, lf11, lf12, lf13, lf14, lf15, user_id) VALUES (:lf1, :lf2, :lf3, :lf4, :lf5, :lf6, :lf7, :lf8, :lf9, :lf10, :lf11, :lf12, :lf13, :lf14, :lf15, :user_id)",
             lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
-            return redirect("/")
+            return redirect("/index")
         else:
-            db.execute("UPDATE traits SET lf1=:lf1, lf2=:lf2, lf3=:lf3, lf4=:lf4, lf5=:lf5, lf6=:lf6, lf7=:lf7, lf8=:lf8, lf9=:lf9, lf10=:lf10, lf11=:lf11, lf12=:lf12, lf13=:lf13, lf14=:lf14, lf15=:lf15, WHERE user_id=:user_id",
+            db.execute("UPDATE traits SET lf1=:lf1, lf2=:lf2, lf3=:lf3, lf4=:lf4, lf5=:lf5, lf6=:lf6, lf7=:lf7, lf8=:lf8, lf9=:lf9, lf10=:lf10, lf11=:lf11, lf12=:lf12, lf13=:lf13, lf14=:lf14, lf15=:lf15 WHERE user_id= :user_id",
             lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
-            return redirect("/")
+            return redirect("/index")
 
 @app.route("/index", methods=["GET", "POST"])
 @login_required
@@ -253,18 +260,120 @@ def login():
         # Redirect user to home page
         return redirect("/index")
 
+@app.route("/match", methods=["GET", "POST"])
+@login_required
+def match():
+
+    openess = db.execute("SELECT OPN FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['OPN']
+    agreeableness = db.execute("SELECT AGR FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['AGR']
+    estability = db.execute("SELECT EST FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['EST']
+    consciousness = db.execute("SELECT CON FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['CON']
+    extraversion = db.execute("SELECT EXT FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['EXT']
+
+    opn = db.execute("SELECT user_id FROM traits WHERE OPN BETWEEN :value1 AND :value2", value1=openess-5, value2=openess+5)
+    agr = db.execute("SELECT user_id FROM traits WHERE AGR BETWEEN :value1 AND :value2", value1=agreeableness-5, value2=agreeableness+5)
+    est = db.execute("SELECT user_id FROM traits WHERE EST BETWEEN :value1 AND :value2", value1=estability-5, value2=estability+5)
+    con = db.execute("SELECT user_id FROM traits WHERE CON BETWEEN :value1 AND :value2", value1=consciousness-5, value2=consciousness+5)
+    ext = db.execute("SELECT user_id FROM traits WHERE EXT BETWEEN :value1 AND :value2", value1=extraversion-5, value2=extraversion+5)
+
+    for item in opn:
+        lista.append(item['user_id'])
+    for item in agr:
+        lista.append(item['user_id'])
+    for item in est:
+        lista.append(item['user_id'])
+    for item in con:
+        lista.append(item['user_id'])
+    for item in ext:
+        lista.append(item['user_id'])
+
+    lf1 = db.execute("SELECT lf1 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf1']
+    lf2 = db.execute("SELECT lf2 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf2']
+    lf3 = db.execute("SELECT lf3 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf3']
+    lf4 = db.execute("SELECT lf4 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf4']
+    lf5 = db.execute("SELECT lf5 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf5']
+    lf6 = db.execute("SELECT lf6 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf6']
+    lf7 = db.execute("SELECT lf7 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf7']
+    lf8 = db.execute("SELECT lf8 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf8']
+    lf9 = db.execute("SELECT lf9 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf9']
+    lf10 = db.execute("SELECT lf10 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf10']
+    lf11 = db.execute("SELECT lf11 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf11']
+    lf12 = db.execute("SELECT lf12 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf12']
+    lf13 = db.execute("SELECT lf13 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf13']
+    lf14 = db.execute("SELECT lf14 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf14']
+    lf15 = db.execute("SELECT lf15 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf15']
+
+    lifestyle1 = db.execute("SELECT user_id FROM traits WHERE lf1=:lf1", lf1=lf1)
+    lifestyle2 = db.execute("SELECT user_id FROM traits WHERE lf2=:lf2", lf2=lf2)
+    lifestyle3 = db.execute("SELECT user_id FROM traits WHERE lf3=:lf3", lf3=lf3)
+    lifestyle4 = db.execute("SELECT user_id FROM traits WHERE lf4=:lf4", lf4=lf4)
+    lifestyle5 = db.execute("SELECT user_id FROM traits WHERE lf5=:lf5", lf5=lf5)
+    lifestyle6 = db.execute("SELECT user_id FROM traits WHERE lf6=:lf6", lf6=lf6)
+    lifestyle7 = db.execute("SELECT user_id FROM traits WHERE lf7=:lf7", lf7=lf7)
+    lifestyle8 = db.execute("SELECT user_id FROM traits WHERE lf8=:lf8", lf8=lf8)
+    lifestyle9 = db.execute("SELECT user_id FROM traits WHERE lf9=:lf9", lf9=lf9)
+    lifestyle10 = db.execute("SELECT user_id FROM traits WHERE lf10=:lf10", lf10=lf10)
+    lifestyle11 = db.execute("SELECT user_id FROM traits WHERE lf11=:lf11", lf11=lf11)
+    lifestyle12 = db.execute("SELECT user_id FROM traits WHERE lf12=:lf12", lf12=lf12)
+    lifestyle13 = db.execute("SELECT user_id FROM traits WHERE lf13=:lf13", lf13=lf13)
+    lifestyle14 = db.execute("SELECT user_id FROM traits WHERE lf14=:lf14", lf14=lf14)
+    lifestyle15 = db.execute("SELECT user_id FROM traits WHERE lf15=:lf15", lf15=lf15)
+
+    for item in lifestyle1:
+        lista.append(item['user_id'])
+    for item in lifestyle2:
+        lista.append(item['user_id'])
+    for item in lifestyle3:
+        lista.append(item['user_id'])
+    for item in lifestyle4:
+        lista.append(item['user_id'])
+    for item in lifestyle5:
+        lista.append(item['user_id'])
+    for item in lifestyle6:
+        lista.append(item['user_id'])
+    for item in lifestyle7:
+        lista.append(item['user_id'])
+    for item in lifestyle8:
+        lista.append(item['user_id'])
+    for item in lifestyle9:
+        lista.append(item['user_id'])
+    for item in lifestyle10:
+        lista.append(item['user_id'])
+    for item in lifestyle11:
+        lista.append(item['user_id'])
+    for item in lifestyle12:
+        lista.append(item['user_id'])
+    for item in lifestyle13:
+        lista.append(item['user_id'])
+    for item in lifestyle14:
+        lista.append(item['user_id'])
+    for item in lifestyle15:
+        lista.append(item['user_id'])
+
+    #Calculating which user appears the most number of times
+    user_id=session["user_id"]
+    filter(lambda a: a != user_id, lista)
+    print(lista)
+    partner = max(set(lista), key=lista.count)
+    name = db.execute("SELECT username, email FROM users WHERE user_id=:user_id", user_id=partner)
+
+    print(name)
+
+    return apology("MATCHED!")
 
 @app.route("/interests", methods=["GET", "POST"])
 @login_required
-def match():
+def interests():
     if request.method == "GET":
         return render_template("interests.html")
     #user = db.execute("SELECT * FROM students WHERE user_id = :user_id", user_id=session["user_id"])
-    if request.method == "POST":
-        user = db.execute("SELECT * FROM users WHERE user_id = :user_id", user_id=1)
-        print(user)
-        attributes = db.execute("SELECT * FROM students")
+#    if request.method == "POST":
+#        user = db.execute("SELECT * FROM users WHERE user_id = :user_id", user_id=1)
+#        print(user)
+#        attributes = db.execute("SELECT * FROM students")
 
         #environment = db.execute("SELECT * FROM students WHERE environment = :environment AND year = :year AND country = :country AND color = :color AND house = :house",
         #environment=attributes[0]['environment'], year=attributes[0]['year'], country=attributes[0]['country'], color=user_color = attributes[0]['color'], house=user_house = attributes[0]['house'])
         #print(environment)
+
+
