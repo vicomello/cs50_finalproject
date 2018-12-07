@@ -11,10 +11,13 @@ from collections import Counter, defaultdict
 from itertools import groupby
 from operator import itemgetter
 from timeit import timeit
+import smtplib
 
 from helpers import login_required, apology
 
 lista = [0]
+server = smtplib.SMTP('smtp.gmail.com', 587)
+
 # Configure application - Copied from Problem set 8
 app = Flask(__name__)
 
