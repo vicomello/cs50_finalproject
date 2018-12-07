@@ -8,26 +8,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <html>
 	<head>
-		<title>Register for Appeople</title>
+		<title>Register for UnI</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
 	<!--	<link href="../../css.css" rel="stylesheet" type="text/css" media="all" />-->
 		<link href="static/css.css" rel="stylesheet">
+		<link rel="stylesheet" href="static/base.css">
+    	<link rel="stylesheet" href="static/vendor.css">
+		<link rel="stylesheet" href="static/main2.css">
 <!-- //Custom Theme files -->
 <!-- web font -->
 		<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 <!-- //web font -->
 	</head>
 	<body>
+		<!-- header
+	    ================================================== -->
+	    <header class="s-header">
+
+	        <div class="header-logo">
+	            <a class="site-logo" href="blog.html">
+	                 <a class="mark" title="intro">UnI</a>
+	            </a>
+	        </div>
+
+	        <nav class="row header-nav-wrap wide">
+	            <ul class="header-main-nav">
+                	<li><a class="smoothscroll" href="/" title="intro" method="get">Introduction</a></li>
+               		<li><a class="smoothscroll" href="/about" title="about" method="get">About Us</a></li>
+                	<li class="current"><a class="smoothscroll" href="/register" title="register" method="get">Register</a></li>
+                	<li><a class="smoothscroll" href="/login" title="login" method="get">Log In</a></li>
+            	</ul>
+
+	            <!--<ul class="header-social">
+	                <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+	                <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+	                <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+	            </ul>-->
+	        </nav>
+
+	        <a class="header-menu-toggle" href="#"><span>Menu</span></a>
+
+	    </header> <!-- end header -->
 		<!-- main -->
 		<div class="main-w3layouts wrapper">
 			<h1>Register</h1>
 			<div class="main-agileinfo">
 				<div class="agileits-top">
 					<form action="/register" method="post">
-						<input autocomplete="off" class="form-control" name="username" placeholder="Full Name" type="text">
+						<input autocomplete="off" class="form-control" name="username" placeholder="Username" type="text">
 						<input class="text email" type="email" name="email" placeholder="Email" required="">
 						<input class="form-control" name="password" placeholder="Password" type="password">
 						<input class="text w3lpass" type="password" name="confirmation" placeholder="Confirm Password" required="">
