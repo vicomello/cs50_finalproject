@@ -40,6 +40,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+
 # Configure session to use filesystem (instead of signed cookies) - Copied from Problem set 8
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
@@ -49,7 +50,9 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///appeople.db")
 
-# Register - Copied from Problem set 8
+# Register new user - Copied from Problem set 8
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
@@ -63,38 +66,43 @@ def register():
         print("teste 1")
         if not request.form.get("username"):
             print("teste 2")
-            return apology ("You must provide a username.")
+            return apology("You must provide a username.")
             print("0")
         print("1")
 
         if not request.form.get("email"):
-            return apology ("You must provide a valid email.")
+            return apology("You must provide a valid email.")
         print("2")
         if not request.form.get("password"):
-            return apology ("You must provide a password.")
+            return apology("You must provide a password.")
 
         if not request.form.get("confirmation"):
-            return  apology("You must confirm your password.")
+            return apology("You must confirm your password.")
 
         if request.form.get("password") != request.form.get("confirmation"):
-            return apology ("Your passwords don't match! Try typing again.")
+            return apology("Your passwords don't match! Try typing again.")
 
         if not db.execute("SELECT username FROM users WHERE username = :username", username=request.form.get("username")):
             hashword = generate_password_hash(request.form.get("password"))
             users = db.execute("INSERT INTO users (username, hashword, email) VALUES(:username, :hash, :email)",
                                username=request.form.get("username"), hash=hashword, email=request.form.get("email"))
             rows = db.execute("SELECT * FROM users WHERE username = :username",
-                          username=request.form.get("username"))
+                              username=request.form.get("username"))
             session["user_id"] = rows[0]["user_id"]
             return redirect("/index")
 
         elif True:
-            return apology ("Username was already taken!")
+            return apology("Username was already taken!")
+
+# Renders our blog page
+
 
 @app.route("/", methods=["GET"])
 def blog():
     return render_template("blog.html")
 
+
+# Gets the data from the personality test
 @app.route("/personality", methods=["GET", "POST"])
 @login_required
 def personality():
@@ -104,33 +112,33 @@ def personality():
         session["user_id"]
 
     if request.method == "POST":
-        #extraversion = int(request.form.get("EXT1")) + int(request.form.get("EXT3")) + int(request.form.get("EXT5")) +  int(request.form.get("EXT7")) +  int(request.form.get("EXT9")) - int(request.form.get("EXT2")) -  int(request.form.get("EXT4")) -  int(request.form.get("EXT6")) -  int(request.form.get("EXT8")) - int(request.form.get("EXT10"))
-        extraversion = int(request.form.get("EXT1")) + int(request.form.get("EXT3")) + int(request.form.get("EXT5")) +  int(request.form.get("EXT7")) + int(request.form.get("EXT9")) - int(request.form.get("EXT2")) - int(request.form.get("EXT4")) - int(request.form.get("EXT6")) - int(request.form.get("EXT8")) - int(request.form.get("EXT10"))
-        agreeableness = int(request.form.get("AGR2")) + int(request.form.get("AGR4")) + int(request.form.get("AGR6")) +  int(request.form.get("AGR8")) +  int(request.form.get("AGR9")) + int(request.form.get("AGR10")) - int(request.form.get("AGR1")) -  int(request.form.get("AGR3")) - int(request.form.get("AGR5")) - int(request.form.get("AGR7"))
-        consciousness = int(request.form.get("CSN1")) + int(request.form.get("CSN3")) + int(request.form.get("CSN5")) +  int(request.form.get("CSN7")) +  int(request.form.get("CSN9")) + int(request.form.get("CSN10")) - int(request.form.get("CSN2")) -  int(request.form.get("CSN4")) - int(request.form.get("CSN6")) - int(request.form.get("CSN8"))
-        estability = int(request.form.get("EST2")) + int(request.form.get("EST4")) - int(request.form.get("EST1")) - int(request.form.get("EST3")) - int(request.form.get("EST5")) - int(request.form.get("EST6")) - int(request.form.get("EST7")) - int(request.form.get("EST8")) - int(request.form.get("EST9")) - int(request.form.get("EST10"))
-        openess = int(request.form.get("OPN1")) + int(request.form.get("OPN3")) + int(request.form.get("OPN5")) + int(request.form.get("OPN7")) +  int(request.form.get("OPN8")) + int(request.form.get("OPN9")) + int(request.form.get("OPN10")) - int(request.form.get("OPN2")) - int(request.form.get("OPN4")) -  int(request.form.get("OPN6"))
+        extraversion = int(request.form.get("EXT1")) + int(request.form.get("EXT3")) + int(request.form.get("EXT5")) + int(request.form.get("EXT7")) + int(request.form.get(
+            "EXT9")) - int(request.form.get("EXT2")) - int(request.form.get("EXT4")) - int(request.form.get("EXT6")) - int(request.form.get("EXT8")) - int(request.form.get("EXT10"))
+        agreeableness = int(request.form.get("AGR2")) + int(request.form.get("AGR4")) + int(request.form.get("AGR6")) + int(request.form.get("AGR8")) + int(request.form.get(
+            "AGR9")) + int(request.form.get("AGR10")) - int(request.form.get("AGR1")) - int(request.form.get("AGR3")) - int(request.form.get("AGR5")) - int(request.form.get("AGR7"))
+        consciousness = int(request.form.get("CSN1")) + int(request.form.get("CSN3")) + int(request.form.get("CSN5")) + int(request.form.get("CSN7")) + int(request.form.get(
+            "CSN9")) + int(request.form.get("CSN10")) - int(request.form.get("CSN2")) - int(request.form.get("CSN4")) - int(request.form.get("CSN6")) - int(request.form.get("CSN8"))
+        estability = int(request.form.get("EST2")) + int(request.form.get("EST4")) - int(request.form.get("EST1")) - int(request.form.get("EST3")) - int(request.form.get(
+            "EST5")) - int(request.form.get("EST6")) - int(request.form.get("EST7")) - int(request.form.get("EST8")) - int(request.form.get("EST9")) - int(request.form.get("EST10"))
+        openess = int(request.form.get("OPN1")) + int(request.form.get("OPN3")) + int(request.form.get("OPN5")) + int(request.form.get("OPN7")) + int(request.form.get(
+            "OPN8")) + int(request.form.get("OPN9")) + int(request.form.get("OPN10")) - int(request.form.get("OPN2")) - int(request.form.get("OPN4")) -  int(request.form.get(
+                "OPN6"))
 
+        # Checking if the user already exists in "traits" table (users can update information)
         user = db.execute("SELECT user_id FROM traits where user_id = :user_id", user_id=session["user_id"])
         if not user:
             db.execute("INSERT INTO traits (EXT, AGR, CON, EST, OPN, user_id) VALUES (:EXT, :AGR, :CON, :EST, :OPN, :user_id)",
-                        EXT=extraversion, AGR=agreeableness, CON=consciousness, EST=estability, OPN=openess, user_id=session["user_id"])
+                       EXT=extraversion, AGR=agreeableness, CON=consciousness, EST=estability, OPN=openess, user_id=session["user_id"])
             return redirect("/index")
         else:
             db.execute("UPDATE traits SET EXT=:EXT, AGR=:AGR, CON=:CON, EST=:EST, OPN=:OPN WHERE user_id= :user_id",
-            EXT=extraversion, AGR=agreeableness, CON=consciousness, EST=estability, OPN=openess, user_id=session["user_id"])
+                       EXT=extraversion, AGR=agreeableness, CON=consciousness, EST=estability, OPN=openess, user_id=session["user_id"])
             return redirect("/index")
-
 
     return redirect("/index")
 
 
-#@app.route("/personality_results", methods=["GET"])
-#@login_required
-#def personality_results():
-#    if request.method == "GET":
-#        return render_template("personality_results.html")
-
+# Gets data from user lifestyle and interests
 @app.route("/lifestyle", methods=["GET", "POST"])
 @login_required
 def lifestyle():
@@ -214,21 +222,25 @@ def lifestyle():
         else:
             lf15 = 0
 
+        # Checking if user is already in "traits" table or if he is inputing his interests for the first time
         user = db.execute("SELECT user_id FROM traits where user_id = :user_id", user_id=session["user_id"])
         if not user:
             db.execute("INSERT INTO traits (lf1, lf2, lf3, lf4, lf5, lf6, lf7, lf8, lf9, lf10, lf11, lf12, lf13, lf14, lf15, user_id) VALUES (:lf1, :lf2, :lf3, :lf4, :lf5, :lf6, :lf7, :lf8, :lf9, :lf10, :lf11, :lf12, :lf13, :lf14, :lf15, :user_id)",
-            lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
+                       lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15,
+                       user_id=session["user_id"])
             return redirect("/index")
         else:
             db.execute("UPDATE traits SET lf1=:lf1, lf2=:lf2, lf3=:lf3, lf4=:lf4, lf5=:lf5, lf6=:lf6, lf7=:lf7, lf8=:lf8, lf9=:lf9, lf10=:lf10, lf11=:lf11, lf12=:lf12, lf13=:lf13, lf14=:lf14, lf15=:lf15 WHERE user_id= :user_id",
-            lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
+                       lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15,
+                       user_id=session["user_id"])
             return redirect("/index")
 
+
+# Renders index page
 @app.route("/index", methods=["GET", "POST"])
 @login_required
 def index():
     return render_template("index.html")
-
 
 
 @app.route("/check", methods=["GET"])
@@ -243,6 +255,9 @@ def check():
 
     else:
         return jsonify(False)
+
+# Login function - copied from Problem set 8
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -272,10 +287,14 @@ def login():
         # Redirect user to home page
         return redirect("/index")
 
+# This is the algorithm that matches the user with someone else highly compatible
+
+
 @app.route("/match", methods=["GET", "POST"])
 @login_required
 def match():
 
+    # Get the personality data from the user
     if request.method == "GET":
         openess = db.execute("SELECT OPN FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['OPN']
         agreeableness = db.execute("SELECT AGR FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['AGR']
@@ -283,12 +302,18 @@ def match():
         consciousness = db.execute("SELECT CON FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['CON']
         extraversion = db.execute("SELECT EXT FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['EXT']
 
+        # Creates a list of dicts for every personality trait with all the users that are similiar in that trait
         opn = db.execute("SELECT user_id FROM traits WHERE OPN BETWEEN :value1 AND :value2", value1=openess-5, value2=openess+5)
-        agr = db.execute("SELECT user_id FROM traits WHERE AGR BETWEEN :value1 AND :value2", value1=agreeableness-5, value2=agreeableness+5)
-        est = db.execute("SELECT user_id FROM traits WHERE EST BETWEEN :value1 AND :value2", value1=estability-5, value2=estability+5)
-        con = db.execute("SELECT user_id FROM traits WHERE CON BETWEEN :value1 AND :value2", value1=consciousness-5, value2=consciousness+5)
-        ext = db.execute("SELECT user_id FROM traits WHERE EXT BETWEEN :value1 AND :value2", value1=extraversion-5, value2=extraversion+5)
+        agr = db.execute("SELECT user_id FROM traits WHERE AGR BETWEEN :value1 AND :value2",
+                         value1=agreeableness-5, value2=agreeableness+5)
+        est = db.execute("SELECT user_id FROM traits WHERE EST BETWEEN :value1 AND :value2",
+                         value1=estability-5, value2=estability+5)
+        con = db.execute("SELECT user_id FROM traits WHERE CON BETWEEN :value1 AND :value2",
+                         value1=consciousness-5, value2=consciousness+5)
+        ext = db.execute("SELECT user_id FROM traits WHERE EXT BETWEEN :value1 AND :value2",
+                         value1=extraversion-5, value2=extraversion+5)
 
+        # Unify all users in one big list containing how many times all the users have appeared as similar personality types
         for item in opn:
             lista.append(item['user_id'])
         for item in agr:
@@ -300,22 +325,24 @@ def match():
         for item in ext:
             lista.append(item['user_id'])
 
-        lf1 = db.execute("SELECT lf1 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf1']
-        lf2 = db.execute("SELECT lf2 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf2']
-        lf3 = db.execute("SELECT lf3 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf3']
-        lf4 = db.execute("SELECT lf4 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf4']
-        lf5 = db.execute("SELECT lf5 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf5']
-        lf6 = db.execute("SELECT lf6 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf6']
-        lf7 = db.execute("SELECT lf7 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf7']
-        lf8 = db.execute("SELECT lf8 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf8']
-        lf9 = db.execute("SELECT lf9 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf9']
-        lf10 = db.execute("SELECT lf10 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf10']
-        lf11 = db.execute("SELECT lf11 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf11']
-        lf12 = db.execute("SELECT lf12 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf12']
-        lf13 = db.execute("SELECT lf13 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf13']
-        lf14 = db.execute("SELECT lf14 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf14']
-        lf15 = db.execute("SELECT lf15 FROM traits WHERE user_id=:user_id",user_id=session["user_id"])[0]['lf15']
+        # Gets the user's data about his interests/lifestyle
+        lf1 = db.execute("SELECT lf1 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf1']
+        lf2 = db.execute("SELECT lf2 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf2']
+        lf3 = db.execute("SELECT lf3 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf3']
+        lf4 = db.execute("SELECT lf4 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf4']
+        lf5 = db.execute("SELECT lf5 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf5']
+        lf6 = db.execute("SELECT lf6 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf6']
+        lf7 = db.execute("SELECT lf7 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf7']
+        lf8 = db.execute("SELECT lf8 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf8']
+        lf9 = db.execute("SELECT lf9 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf9']
+        lf10 = db.execute("SELECT lf10 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf10']
+        lf11 = db.execute("SELECT lf11 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf11']
+        lf12 = db.execute("SELECT lf12 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf12']
+        lf13 = db.execute("SELECT lf13 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf13']
+        lf14 = db.execute("SELECT lf14 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf14']
+        lf15 = db.execute("SELECT lf15 FROM traits WHERE user_id=:user_id", user_id=session["user_id"])[0]['lf15']
 
+        # Creates a list of dicts for every lifestyle item consisting in all the users that have marked the same response
         lifestyle1 = db.execute("SELECT user_id FROM traits WHERE lf1=:lf1", lf1=lf1)
         lifestyle2 = db.execute("SELECT user_id FROM traits WHERE lf2=:lf2", lf2=lf2)
         lifestyle3 = db.execute("SELECT user_id FROM traits WHERE lf3=:lf3", lf3=lf3)
@@ -332,6 +359,7 @@ def match():
         lifestyle14 = db.execute("SELECT user_id FROM traits WHERE lf14=:lf14", lf14=lf14)
         lifestyle15 = db.execute("SELECT user_id FROM traits WHERE lf15=:lf15", lf15=lf15)
 
+        # Appends all those users that had things in common to one list
         for item in lifestyle1:
             lista.append(item['user_id'])
         for item in lifestyle2:
@@ -363,25 +391,21 @@ def match():
         for item in lifestyle15:
             lista.append(item['user_id'])
 
-        #Calculating which user appears the most number of times
-        user_id=session["user_id"]
+        # Calculating which user appears the most number of times
+        user_id = session["user_id"]
+        # Removes the own user (loged in) from the list
         nova = [x for x in lista if x != user_id]
+        # Calculates the mode in that list
         partner = max(set(nova), key=nova.count)
+        # Get the user's info based on their user_id
         name = db.execute("SELECT username, email FROM users WHERE user_id=:user_id", user_id=partner)
+        # Render the results of who is the highest matching person
         return render_template("personality_results.html", name=name)
 
-    #if request.method == "POST":
-     #   return render_template("personality_results.html", name=name)
 
-#@app.route("/interests", methods=["GET", "POST"])
-#@login_required
-#def interests():
-#    if request.method == "GET":
-#        return render_template("interests.html")
-
+# Log out function - copied from Problem Set 8
 @app.route("/logout")
 def logout():
-    """Log user out - Copied from Problem set 8"""
 
     # Forget any user_id
     session.clear()

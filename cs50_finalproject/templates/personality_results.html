@@ -1,3 +1,11 @@
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -5,7 +13,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Appeople</title>
+    <title>UnI</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -23,11 +31,6 @@
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
 
-    <!-- favicons
-    ================================================== -->
-    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
-    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
-
 </head>
 
 <body id="top">
@@ -43,30 +46,28 @@
 
         <div class="header-logo">
             <a class="site-logo" href="blog.html">
-                 <a class="mark" href="#home" title="intro">Appeople</a>
+                 <a class="mark" href="#home" title="intro">UnI</a>
             </a>
         </div>
 
         <nav class="row header-nav-wrap wide">
             <ul class="header-main-nav">
-                <li class="current"><a class="smoothscroll" href="/" title="intro" method="get">Intro</a></li>
-                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
-                <li><a class="smoothscroll" href="/login" title="login" method="get">Sign In</a></li>
-                <li><a class="smoothscroll" href="/register" title="register" method="get">Register</a></li>
-                <li><a href="/logout" title="blog">Log Out</a></li>
+                <li><a class="smoothscroll" href="/index" title="blog" method="get">Home</a></li>
+                <li><a href="/logout" title="logout">Log out</a></li>
             </ul>
 
            <div>
                 {% block main %}
                     <div>
-                    <h3 style="color:blue;">
-                            Congratualtions! You have a match.
-                            His/her name is {{name[0].username}}!
+                    <!-- match name and email -->
+                    <h3 style="color:#c90016; margin-left: 4rem">
+                            Congratulations! You have a match.
+                            His/her name is {{name[0].username}}.
                     </h3>
                     </div>
                     <div>
-                    <h3 style="color:blue;">
-                            You can contact him/her at {{name[0].email}}
+                    <h3 style="color:#c90016; margin-left: 4rem">
+                            You can contact him/her at {{name[0].email}}.
                     </h3>
                     </div>
                 {% endblock %}

@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 /* ===================================================================
- *
+ *Author: Colorlib
+  Author URL: https://colorlib.com
  *  Standout v1.0 Main Stylesheet
  *  09-12-2018
  *  ------------------------------------------------------------------
@@ -893,8 +894,8 @@ button.btn--primary:focus,
 input[type="submit"].btn--primary:focus,
 input[type="reset"].btn--primary:focus,
 input[type="button"].btn--primary:focus {
-  background: #008d44;
-  border-color: #008d44;
+  background: #6c5d5e;
+  border-color: #6c5d5e;
 }
 
 /* button modifiers
@@ -902,7 +903,8 @@ input[type="button"].btn--primary:focus {
 .btn.full-width,
 button.full-width {
   width: 100%;
-  margin-right: 0;
+  margin: auto;
+  text-align: center;
 }
 
 .btn--medium,
@@ -915,7 +917,9 @@ button.btn--medium {
 button.btn--large {
   height: 6.8rem !important;
   line-height: 6.4rem !important;
-  margin-left: 6.4rem;
+  margin-left: 13rem;
+  margin-top: 7rem;
+  text-align: center;
 }
 
 .btn--stroke,
@@ -2138,7 +2142,7 @@ input::-moz-focus-inner {
  * ## home button section
  * ------------------------------------------------------------------- */
 .home-content__button {
-  margin-top: 8.8rem;
+  margin-top: auto;
 }
 
 .home-content__button .btn {

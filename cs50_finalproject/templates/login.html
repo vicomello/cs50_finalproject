@@ -19,10 +19,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	<link rel="stylesheet" href="static/vendor.css">
     	<link rel="stylesheet" href="static/main2.css">
 
-    <!-- script
-    ================================================== -->
-    	<!--<script src="js/modernizr.js"></script>
-    	<script src="js/pace.min.js"></script> -->
 <!-- //Custom Theme files -->
 <!-- web font -->
 		<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -41,17 +37,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		    <nav class="row header-nav-wrap wide">
 		        <ul class="header-main-nav">
-                	<li><a class="smoothscroll" href="/" title="intro" method="get">Introduction</a></li>
-               		<li><a class="smoothscroll" href="/about" title="about" method="get">About Us</a></li>
+                	<li><a class="smoothscroll" href="/" title="intro" method="get">Home</a></li>
                 	<li><a class="smoothscroll" href="/register" title="register" method="get">Register</a></li>
                 	<li class="current"><a class="smoothscroll" href="/login" title="login" method="get">Log In</a></li>
             	</ul>
-
-		            <!--<ul class="header-social">
-		                <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-		                <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-		                <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-		            </ul>-->
 		    </nav>
 
 		    <a class="header-menu-toggle" href="#"><span>Menu</span></a>
@@ -59,21 +48,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	    </header> <!-- end header -->
 		<!-- main -->
 		<div class="main-w3layouts wrapper">
+			<!-- title -->
 			<h1>Log In</h1>
 			<div class="main-agileinfo">
 				<div class="agileits-top">
 					<form action="/login" method="post">
-						<input autocomplete="off" class="form-control" name="username" placeholder="Username" type="text">
-						<input class="form-control" name="password" placeholder="Password" type="password">
+						<!-- login -->
+						<input autocomplete="off" class="form-control" style="color:white" name="username" placeholder="Username" type="text" required>
+						<input class="form-control" style="color:white" name="password" placeholder="Password" type="password" required>
 						<div class="wthree-text">
-							<!--<label class="anim">
-								<input type="checkbox" class="checkbox" required="">
-								<span>I Agree To The Terms & Conditions</span>
-							</label>-->
 							<div class="clear2"> </div>
 						</div>
 						<input type="submit" value="LOGIN">
 					</form>
+					<!-- go to register if don't have an account -->
 					<p>Don't have an Account? <a href="/register"> Register Now!</a></p>
 				</div>
 			</div>

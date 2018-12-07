@@ -29,7 +29,9 @@ in our database best matches with the logged user. Then, it renders a template w
 
 
 # Requirements
+ - Download all the files and folders.
  - To run the project, all you have to do is go "flask run" in your terminal window.
+ - You need the appeople.db database
 
 # How to use it
 - First of all click on "Register" and create an account;

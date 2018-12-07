@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-/* ===================================================================
+/* Took main.css and made changes/*
+===================================================================
  *
  *  Standout v1.0 Main Stylesheet
  *  09-12-2018
@@ -676,6 +677,7 @@ fieldset {
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
+
 
 /* IE9 and below */
 .oldie .cl-custom-select::after {
