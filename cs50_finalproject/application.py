@@ -115,14 +115,14 @@ def personality():
         if not user:
             db.execute("INSERT INTO traits (EXT, AGR, CON, EST, OPN, user_id) VALUES (:EXT, :AGR, :CON, :EST, :OPN, :user_id)",
                         EXT=extraversion, AGR=agreeableness, CON=consciousness, EST=estability, OPN=openess, user_id=session["user_id"])
-            return redirect("/interests")
+            return redirect("/index")
         else:
             db.execute("UPDATE traits SET EXT=:EXT, AGR=:AGR, CON=:CON, EST=:EST, OPN=:OPN WHERE user_id= :user_id",
             EXT=extraversion, AGR=agreeableness, CON=consciousness, EST=estability, OPN=openess, user_id=session["user_id"])
-            return redirect("/interests")
+            return redirect("/index")
 
 
-    return redirect("/interests")
+    return redirect("/index")
 
 
 #@app.route("/personality_results", methods=["GET"])
@@ -218,11 +218,11 @@ def lifestyle():
         if not user:
             db.execute("INSERT INTO traits (lf1, lf2, lf3, lf4, lf5, lf6, lf7, lf8, lf9, lf10, lf11, lf12, lf13, lf14, lf15, user_id) VALUES (:lf1, :lf2, :lf3, :lf4, :lf5, :lf6, :lf7, :lf8, :lf9, :lf10, :lf11, :lf12, :lf13, :lf14, :lf15, :user_id)",
             lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
-            return redirect("/interests")
+            return redirect("/index")
         else:
             db.execute("UPDATE traits SET lf1=:lf1, lf2=:lf2, lf3=:lf3, lf4=:lf4, lf5=:lf5, lf6=:lf6, lf7=:lf7, lf8=:lf8, lf9=:lf9, lf10=:lf10, lf11=:lf11, lf12=:lf12, lf13=:lf13, lf14=:lf14, lf15=:lf15 WHERE user_id= :user_id",
             lf1=lf1, lf2=lf2, lf3=lf3, lf4=lf4, lf5=lf5, lf6=lf6, lf7=lf7, lf8=lf8, lf9=lf9, lf10=lf10, lf11=lf11, lf12=lf12, lf13=lf13, lf14=lf14, lf15=lf15, user_id=session["user_id"])
-            return redirect("/interests")
+            return redirect("/index")
 
 @app.route("/index", methods=["GET", "POST"])
 @login_required
@@ -365,26 +365,19 @@ def match():
 
         #Calculating which user appears the most number of times
         user_id=session["user_id"]
-        #list(filter(lambda a: a != user_id, lista))
-        print(lista)
         nova = [x for x in lista if x != user_id]
-        print(nova)
         partner = max(set(nova), key=nova.count)
-        print(partner)
         name = db.execute("SELECT username, email FROM users WHERE user_id=:user_id", user_id=partner)
-
-        print(name)
-
         return render_template("personality_results.html", name=name)
 
     #if request.method == "POST":
      #   return render_template("personality_results.html", name=name)
 
-@app.route("/interests", methods=["GET", "POST"])
-@login_required
-def interests():
-    if request.method == "GET":
-        return render_template("interests.html")
+#@app.route("/interests", methods=["GET", "POST"])
+#@login_required
+#def interests():
+#    if request.method == "GET":
+#        return render_template("interests.html")
 
 @app.route("/logout")
 def logout():
